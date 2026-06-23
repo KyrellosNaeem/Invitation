@@ -1,0 +1,191 @@
+.invitation {
+  padding: 24px 20px 40px;
+  font-family: 'Georgia', serif;
+  color: #3a2c23;
+  line-height: 1.7;
+}
+
+/* ── COUPLE PHOTO ── */
+.our-photo {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.couple-photo {
+  width: 100%;
+  max-height: 280px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* ── NAMES & DATE ── */
+.names-date {
+  text-align: center;
+}
+
+.title {
+  font-size: clamp(24px, 5vw, 44px);
+  margin: 0 0 6px;
+}
+
+.names {
+  font-size: clamp(16px, 3vw, 24px);
+  color: #b07c55;
+  margin: 6px 0;
+}
+
+.date,
+.location {
+  font-size: 14px;
+  margin: 4px 0;
+  color: #6b4f3a;
+}
+
+hr {
+  margin: 36px 0;
+  border: none;
+  border-top: 1px solid #e0d0c0;
+}
+
+h3 {
+  font-size: 18px;
+  color: #5a3924;
+  margin: 0 0 12px;
+}
+
+/* ── GUEST MESSAGE ── */
+.invitation-text {
+  background: #fdf6ef;
+  border-left: 4px solid #b07c55;
+  padding: 16px 20px;
+  border-radius: 8px;
+}
+
+.guest-greeting {
+  font-size: 17px;
+  font-weight: bold;
+  color: #5a3924;
+  margin: 0 0 6px;
+}
+
+.guest-message {
+  font-size: 15px;
+  font-style: italic;
+  margin: 0;
+}
+
+/* ── MAP ── */
+.map {
+  width: 100%;
+  height: 260px;
+  border: none;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+/* ── CALENDAR ── */
+.calendar-section {
+  text-align: center;
+}
+
+.calendar {
+  display: inline-block;
+  width: 100%;
+  max-width: 340px;
+  background: #fff8f2;
+  border: 1px solid #e8d5c4;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  margin: 0 auto 20px;
+}
+
+.cal-header {
+  background: #b07c55;
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 11px;
+  letter-spacing: 0.06em;
+}
+
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  padding: 8px;
+}
+
+.cal-label {
+  font-size: 10px;
+  font-weight: bold;
+  color: #b07c55;
+  text-align: center;
+  padding: 4px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.cal-cell {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  color: #3a2c23;
+  border-radius: 50%;
+}
+
+.cal-cell.highlight {
+  background: #b07c55;
+  color: #fff;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(176, 124, 85, 0.5);
+}
+
+.heart-icon {
+  font-size: 8px;
+  line-height: 1;
+  display: block;
+}
+
+/* ── ADD TO CALENDAR BUTTON ── */
+.add-to-calendar-btn {
+  padding: 10px 26px;
+  background: #b07c55;
+  color: #fff;
+  font-family: 'Georgia', serif;
+  font-size: 14px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(176, 124, 85, 0.35);
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.add-to-calendar-btn:hover {
+  background: #9a6743;
+  transform: translateY(-1px);
+}
+
+/* ── RECEPTION ── */
+.reception {
+  background: #fdf6ef;
+  border-radius: 10px;
+  padding: 16px 20px;
+}
+
+.reception p {
+  margin: 6px 0;
+  font-size: 14px;
+}
+
+/* ── FOOTER ── */
+.footer {
+  text-align: center;
+  margin-top: 40px;
+  font-style: italic;
+  color: #6b4f3a;
+}

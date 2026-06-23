@@ -1,0 +1,22 @@
+<div class="envelope" [class.open]="isOpen" (click)="toggleEnvelope()">
+
+  <!-- Top flap -->
+  <div class="flap">
+    <div class="flap-body">
+      <span class="flap-text">{{ guestName }}</span>
+    </div>
+    <div class="stamp"></div>
+  </div>
+
+  <!-- Body sides -->
+  <div class="body">
+    <div class="left-side" [style.transform]="'translateY(' + scrollOffset * 0.4 + 'px)'"></div>
+    <div class="right-side" [style.transform]="'translateY(' + scrollOffset * 0.4 + 'px)'"></div>
+  </div>
+
+  <!-- Scrollable invitation content -->
+  <div class="invitation-wrapper" (click)="$event.stopPropagation()" (scroll)="onScroll($event)">
+    <app-invitation-body [guestName]="guestName"></app-invitation-body>
+  </div>
+
+</div>

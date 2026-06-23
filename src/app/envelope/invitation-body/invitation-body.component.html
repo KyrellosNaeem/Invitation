@@ -1,0 +1,84 @@
+<div class="invitation">
+
+  <!-- ── COUPLE PHOTO ── -->
+  <div class="our-photo">
+    <img src="assets/couple.jpg" alt="Abanoub & Nour" class="couple-photo" />
+  </div>
+
+  <!-- ── NAMES & DATE ── -->
+  <div class="names-date">
+    <p class="title">We're Getting Married</p>
+    <p class="names">Abanoub Samir &amp; Nour Hany</p>
+    <p class="date">Saturday · July 19, 2025</p>
+    <p class="location">Church of St. Mary · Cairo, Egypt</p>
+  </div>
+
+  <hr />
+
+  <!-- ── CUSTOM GUEST MESSAGE (from invitation-config.json) ── -->
+  <div class="invitation-text" *ngIf="customMessage">
+    <p class="guest-greeting">Dear {{ guestName }},</p>
+    <p class="guest-message">{{ customMessage }}</p>
+  </div>
+
+  <hr />
+
+  <!-- ── CHURCH LOCATION ── -->
+  <div class="church-location">
+    <h3>Ceremony Venue</h3>
+    <p>Church of St. Mary, Heliopolis, Cairo, Egypt</p>
+    <iframe
+      class="map"
+      loading="lazy"
+      allowfullscreen
+      referrerpolicy="no-referrer-when-downgrade"
+      src="https://www.google.com/maps/embed/v1/place?key=YOUR_GOOGLE_MAPS_API_KEY&q=Church+of+St+Mary+Heliopolis+Cairo">
+    </iframe>
+  </div>
+
+  <hr />
+
+  <!-- ── SAVE THE DATE CALENDAR ── -->
+  <div class="calendar-section">
+    <h3>Save the Date — July 2025</h3>
+
+    <div class="calendar">
+      <div class="cal-header">July 2025</div>
+
+      <div class="cal-grid">
+        <div class="cal-label" *ngFor="let d of dayLabels">{{ d }}</div>
+
+        <div
+          *ngFor="let day of calendarDays"
+          class="cal-cell"
+          [class.empty]="day === null"
+          [class.highlight]="day === weddingDay">
+          <span *ngIf="day !== null">{{ day }}</span>
+          <span *ngIf="day === weddingDay" class="heart-icon">♥</span>
+        </div>
+      </div>
+    </div>
+
+    <button class="add-to-calendar-btn" (click)="addToCalendar()">
+      📅 Add to Google Calendar
+    </button>
+  </div>
+
+  <hr />
+
+  <!-- ── RECEPTION (shown only if showReception = true in JSON) ── -->
+  <div class="reception" *ngIf="showReception">
+    <h3>Reception</h3>
+    <p>Following the ceremony, please join us for an evening of dinner, dancing, and celebration.</p>
+    <p><strong>Venue:</strong> Nile View Ballroom, Cairo</p>
+    <p><strong>Time:</strong> 7:00 PM onwards</p>
+    <p><strong>Dress Code:</strong> Formal / Black Tie</p>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <div class="footer">
+    <p>With love,</p>
+    <p><strong>Abanoub &amp; Nour</strong></p>
+  </div>
+
+</div>

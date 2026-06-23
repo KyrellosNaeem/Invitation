@@ -1,0 +1,14 @@
+{
+  "showReception": true,
+  "guests": {
+    "abanoub": {
+      "message": "We are overjoyed to have you celebrate this special day with us. Your presence means the world to us!"
+    },
+    "sara": {
+      "message": "Your warmth and kindness have always been a blessing. We can't wait to share this joyful moment with you."
+    },
+    "default": {
+      "message": "We joyfully invite you to share in the celebration of our wedding day. Your presence is our greatest gift."
+    }
+  }
+}
