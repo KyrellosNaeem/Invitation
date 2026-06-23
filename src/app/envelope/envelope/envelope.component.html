@@ -1,0 +1,26 @@
+<div class="envelope" [class.open]="isOpen" (click)="toggleEnvelope()">
+
+    <!-- Top flap -->
+    <div class="flap">
+        <div class="flap-body">
+            <span>Dear friend\ Abanoub Samir</span> <!--put this in center justify-content: center align-items: center;-->
+        </div>
+        <div class="stamp"></div>
+    </div>
+    
+
+    <!-- Body -->
+    <div class="body">
+        <div class="left-side" [style.transform]="'translateY(' + scrollOffset * 0.4 + 'px)'">
+        </div>
+
+        <div class="right-side" [style.transform]="'translateY(' + scrollOffset * 0.4 + 'px)'">
+        </div>
+    </div>
+    
+    <div class="invitation-wrapper" (scroll)="onScroll($event)">
+        <app-invitation-body></app-invitation-body>
+    </div>
+
+
+</div>

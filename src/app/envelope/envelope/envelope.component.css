@@ -1,0 +1,112 @@
+* {
+    box-sizing: border-box;
+}
+
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background: #f5efe6;
+    overflow: hidden;
+    perspective: 1200px;
+}
+
+/* ENVELOPE */
+
+.envelope {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1.4 / 1;
+    cursor: pointer;
+    transform-style: preserve-3d;
+}
+
+/* BODY */
+
+.body {
+    position: absolute;
+    inset: 0;
+    background: #e4e0dd;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+
+.right-side,
+.left-side {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+}
+
+.right-side {
+    background-image: url('../../../assets/skin.jpeg');
+    background-size: 120%;
+    background-position: center;
+    clip-path: polygon(0% 25%, 50% 50%, 50% 100%, 0% 100%);
+}
+
+.left-side {
+    background-image: url('../../../assets/skin.jpeg');
+    background-size: 120%;
+    background-position: center;
+    clip-path: polygon(50% 50%, 100% 25%, 100% 100%, 50% 100%);
+}
+
+/* TOP FLAP */
+
+.flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 66%;
+    transform-origin: top center;
+    transition: transform 3s ease;
+    z-index: 5;
+    filter: drop-shadow(10px 8px 10px rgba(0, 0, 0, 0.25));
+}
+
+.flap-body {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 45%, 50% 100%, 0% 45%);
+    background-image: url('../../../assets/skin.jpeg');
+    background-size: 225%;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+
+}
+
+.stamp {
+    width: 30%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background-image: url('../../../assets/seal.png');
+    background-size: 225%;
+    background-position: center;
+    position: absolute;
+    top: 80%;
+    left: 35%;
+    filter: drop-shadow(10px 8px 10px rgba(0, 0, 0, 0.4));
+}
+
+/* OPEN STATE */
+
+.envelope.open .flap {
+    transform: rotateX(180deg);
+    z-index: 1;
+}
+
+.invitation-wrapper {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    overflow-y: scroll;
+    height: 100%;
+}
