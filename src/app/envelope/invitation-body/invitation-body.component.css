@@ -13,10 +13,12 @@
 
 .couple-photo {
   width: 100%;
-  max-height: 280px;
+  max-height: 4000px;
   object-fit: cover;
+  object-position: center;
   border-radius: 12px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  object-position: 0 -600px;
 }
 
 /* ── NAMES & DATE ── */
