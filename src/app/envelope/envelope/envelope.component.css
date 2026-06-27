@@ -43,6 +43,8 @@
   background-image: url('../../../assets/skin.jpeg');
   background-size: 120%;
   background-position: center;
+  transition: transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: translateY(var(--scroll, 0px));
 }
 
 .right-side {
@@ -90,6 +92,9 @@
   z-index: 5;
 
   width: 100%;
+
+  transition: transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: translateY(var(--scroll, 0px));
 }
 
 .flap-text-container {
@@ -148,6 +153,10 @@
 .envelope.open .flap {
   transform: rotateX(90deg);
   z-index: 1;
+}
+
+.body.down  .left-side {
+  transform: translateY(100px);
 }
 
 /* ── INVITATION SCROLL WRAPPER ── */

@@ -33,6 +33,9 @@ export class EnvelopeComponent implements OnInit {
   
   toggleEnvelope(): void {
     if (this.scrollOffset < 1) {
+      if (!this.isOpen) {
+        this.scrollOffset = 150; // Reset scroll offset when opening the envelope
+      }
       this.isOpen = !this.isOpen;
     }
   }
