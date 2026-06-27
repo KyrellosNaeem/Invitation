@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { InvitationBodyComponent } from '../invitation-body/invitation-body.component';
+import { first } from 'rxjs/internal/operators/first';
 
 @Component({
   selector: 'app-envelope',
@@ -14,8 +15,9 @@ export class EnvelopeComponent implements OnInit {
   isOpen = false;
   scrollOffset = 0;
   guestName = 'Dear Friend';
+  showInvitation = false;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private ngZone: NgZone) {}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
@@ -24,6 +26,12 @@ export class EnvelopeComponent implements OnInit {
       }
     });
   }
+
+  ngAfterViewInit() {
+  this.ngZone.onStable.pipe(first()).subscribe(() => {
+    this.showInvitation = true;
+  });
+}
 
   toggleEnvelope(): void {
     if (this.scrollOffset < 1) {

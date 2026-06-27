@@ -20,7 +20,7 @@
   </div>
 
   <!-- Scrollable invitation content -->
-  <div class="invitation-wrapper" (click)="$event.stopPropagation()" (scroll)="onScroll($event)">
+  <div class="invitation-wrapper" *ngIf="showInvitation" (click)="$event.stopPropagation()" (scroll)="onScroll($event)">
     <app-invitation-body [guestName]="guestName"></app-invitation-body>
   </div>
 

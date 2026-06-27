@@ -46,11 +46,11 @@
 }
 
 .right-side {
-  clip-path: polygon(49% 50%, 100% 25%, 100% 100%, 49% 100%);
+  clip-path: polygon(49% 40%, 100% 15%, 100% 100%, 49% 100%);
 }
 
 .left-side {
-  clip-path: polygon(0% 25%, 51% 50%, 51% 100%, 0% 100%);
+  clip-path: polygon(0% 15%, 51% 40%, 51% 100%, 0% 100%);
 }
 
 /* ── TOP FLAP ── */
@@ -67,9 +67,9 @@
 }
 
 .flap-body {
-  clip-path: polygon(0% 0%, 100% 0%, 100% 45%, 50% 100%, 0% 45%);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 30%, 50% 70%, 0% 30%);
   background-image: url('../../../assets/skin.jpeg');
-  background-size: 225%;
+  background-size: 115%;
   background-position: center;
   width: 100%;
   height: 100%;
@@ -114,6 +114,8 @@
   letter-spacing: 0.06em;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
   display: inline;
+  width: 100%;
+  text-align: end;
 }
 
 .flap-text {
@@ -130,12 +132,12 @@
 .stamp {
   width: 30%;
   aspect-ratio: 1 / 1;
-  border-radius: 50%;
+  border-radius: 60%;
   background-image: url('../../../assets/seal.png');
   background-size: 225%;
   background-position: center;
   position: absolute;
-  top: 80%;
+  top: 55%;
   left: 35%;
   filter: drop-shadow(10px 8px 10px rgba(0, 0, 0, 0.4));
 }
