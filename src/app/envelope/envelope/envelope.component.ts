@@ -17,7 +17,7 @@ export class EnvelopeComponent implements OnInit {
   guestName = 'Dear Friend';
   showInvitation = false;
 
-  constructor(private route: ActivatedRoute, private ngZone: NgZone) {}
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
@@ -25,14 +25,12 @@ export class EnvelopeComponent implements OnInit {
         this.guestName = decodeURIComponent(params['guest']);
       }
     });
+
+     setTimeout(() => {
+      this.showInvitation = true;
+              }, 3000);
   }
-
-  ngAfterViewInit() {
-  this.ngZone.onStable.pipe(first()).subscribe(() => {
-    this.showInvitation = true;
-  });
-}
-
+  
   toggleEnvelope(): void {
     if (this.scrollOffset < 1) {
       this.isOpen = !this.isOpen;
