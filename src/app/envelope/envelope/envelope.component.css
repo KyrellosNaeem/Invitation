@@ -84,20 +84,22 @@
   justify-content: center;
   align-items: center;
   margin-top: 6%;
-  
+
   position: absolute;
   top: 70%;
   z-index: 5;
-  
+
   width: 100%;
 }
 
 .flap-text-container {
-  padding: 10px 28px;
-  background: rgba(30, 16, 8, 0.55);
+  padding: 10px 10px;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)),
+    url("../../../assets/bg.png");
   border-radius: 18px;
   backdrop-filter: blur(2px);
-  box-shadow: 0 2px 12px rgba(0,0,0,0.35);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -144,7 +146,7 @@
 
 /* ── OPEN STATE ── */
 .envelope.open .flap {
-  transform: rotateX(180deg);
+  transform: rotateX(90deg);
   z-index: 1;
 }
 
