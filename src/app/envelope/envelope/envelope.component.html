@@ -9,7 +9,7 @@
 
   <!-- Body sides -->
   <div class="body">
-    <div class="flap-text-wrapper">
+    <div class="flap-text-wrapper" [style.transform]="'translateY(' + scrollOffset * 1.4 + 'px)'">
       <div class="flap-text-container">
         <div class="flap-text">To our dear friend\</div>
         <div class="flap-text-name">{{ guestName }}</div>
