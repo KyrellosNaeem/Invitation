@@ -3,13 +3,18 @@
   <!-- Top flap -->
   <div class="flap">
     <div class="flap-body">
-      <span class="flap-text">{{ guestName }}</span>
     </div>
     <div class="stamp"></div>
   </div>
 
   <!-- Body sides -->
   <div class="body">
+    <div class="flap-text-wrapper">
+      <div class="flap-text-container">
+        <div class="flap-text">To our dear friend\</div>
+        <div class="flap-text-name">{{ guestName }}</div>
+      </div>
+    </div>
     <div class="left-side" [style.transform]="'translateY(' + scrollOffset * 1.4 + 'px)'"></div>
     <div class="right-side" [style.transform]="'translateY(' + scrollOffset * 1.4 + 'px)'"></div>
   </div>

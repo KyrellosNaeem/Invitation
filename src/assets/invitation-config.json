@@ -1,14 +1,17 @@
 {
   "showReception": true,
   "guests": {
-    "abanoub": {
-      "message": "We are overjoyed to have you celebrate this special day with us. Your presence means the world to us!"
+    "kyrillos": {
+      "message": "We are overjoyed to have you celebrate this special day with us. Your presence means the world to us!",
+      "showReception": true
     },
-    "sara": {
-      "message": "Your warmth and kindness have always been a blessing. We can't wait to share this joyful moment with you."
+    "selvana": {
+      "message": "Your warmth and love have always been a blessing. We can't wait to share this joyful moment with you.",
+      "showReception": true
     },
     "default": {
-      "message": "We joyfully invite you to share in the celebration of our wedding day. Your presence is our greatest gift."
+      "message": "We joyfully invite you to share in the celebration of our wedding day. Your presence is our greatest gift.",
+      "showReception": true
     }
   }
 }

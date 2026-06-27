@@ -1,74 +1,192 @@
+/* ═══════════════════════════════════════════
+   KEYFRAME ANIMATIONS
+═══════════════════════════════════════════ */
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+@keyframes pulse-ring {
+  0%   { box-shadow: 0 0 0 0 rgba(176, 124, 85, 0.5); }
+  70%  { box-shadow: 0 0 0 14px rgba(176, 124, 85, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(176, 124, 85, 0);   }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1);    }
+  25%       { transform: scale(1.25); }
+  50%       { transform: scale(1);    }
+  75%       { transform: scale(1.15); }
+}
+
+@keyframes floatUp {
+  0%, 100% { transform: translateY(0);   }
+  50%       { transform: translateY(-6px); }
+}
+
+@keyframes borderGlow {
+  0%, 100% { border-color: #b07c55; }
+  50%       { border-color: #e8b98a; }
+}
+
+@keyframes countFlip {
+  0%   { transform: rotateX(0deg);    opacity: 1; }
+  50%  { transform: rotateX(90deg);   opacity: 0; }
+  51%  { transform: rotateX(-90deg);  opacity: 0; }
+  100% { transform: rotateX(0deg);    opacity: 1; }
+}
+
+/* ═══════════════════════════════════════════
+   WRAPPER & BACKGROUND
+═══════════════════════════════════════════ */
+
 .invitation {
-  padding: 24px 20px 40px;
+  position: relative;
+  padding: 0 0 60px;
   font-family: 'Georgia', serif;
   color: #3a2c23;
   line-height: 1.7;
+  overflow: hidden;
 }
 
-/* ── COUPLE PHOTO ── */
+/* Faded background image */
+.bg-image {
+  position: fixed;
+  inset: 0;
+  background-image: url('../../../assets/bg.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: local;
+  opacity: 0.8;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* All content above bg */
+.fade-section,
+.our-photo,
+.names-date,
+.invitation-text,
+.countdown-section,
+.calendar-section,
+.church-location,
+.reception,
+.rsvp-section,
+.footer {
+  position: relative;
+  z-index: 1;
+  padding: 32px 24px;
+}
+
+/* ── FADE-IN ON SCROLL ── */
+.fade-section {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.75s ease, transform 0.75s ease;
+}
+
+.fade-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════════════════════════════════════
+   COUPLE PHOTO
+═══════════════════════════════════════════ */
+
 .our-photo {
   text-align: center;
-  margin-bottom: 24px;
+  padding-top: 0;
+  padding-inline: 0 !important;
+
 }
 
 .couple-photo {
   width: 100%;
-  max-height: 4000px;
+  max-height: 300px;
   object-fit: cover;
-  object-position: center;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-  object-position: 0 -600px;
+  object-position: 0 -100px;
+  border-radius: 0 0 16px 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
 }
 
-/* ── NAMES & DATE ── */
+/* ═══════════════════════════════════════════
+   NAMES & DATE
+═══════════════════════════════════════════ */
+
 .names-date {
   text-align: center;
+  padding-top: 16px;
+}
+
+.pre-title {
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #9a6a48;
+  margin-bottom: 8px;
 }
 
 .title {
-  font-size: clamp(24px, 5vw, 44px);
-  margin: 0 0 6px;
+  font-size: clamp(36px, 8vw, 64px);
+  margin: 0 0 4px;
+  background: linear-gradient(120deg, #8b5e3c, #d4956a, #8b5e3c);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
 }
 
 .names {
-  font-size: clamp(16px, 3vw, 24px);
+  font-size: clamp(14px, 2.8vw, 20px);
   color: #b07c55;
   margin: 6px 0;
+  letter-spacing: 0.05em;
 }
 
 .date,
 .location {
-  font-size: 14px;
+  font-size: 13px;
   margin: 4px 0;
   color: #6b4f3a;
+  letter-spacing: 0.04em;
 }
 
-hr {
-  margin: 36px 0;
-  border: none;
-  border-top: 1px solid #e0d0c0;
+.divider-ornament {
+  margin-top: 18px;
+  font-size: 14px;
+  color: #c49a6c;
+  letter-spacing: 0.3em;
+  animation: floatUp 3s ease-in-out infinite;
 }
 
-h3 {
-  font-size: 18px;
-  color: #5a3924;
-  margin: 0 0 12px;
-}
+/* ═══════════════════════════════════════════
+   GUEST MESSAGE
+═══════════════════════════════════════════ */
 
-/* ── GUEST MESSAGE ── */
 .invitation-text {
-  background: #fdf6ef;
+  background: rgba(253, 246, 239, 0.85);
   border-left: 4px solid #b07c55;
-  padding: 16px 20px;
   border-radius: 8px;
+  animation: borderGlow 3s ease-in-out infinite;
+  backdrop-filter: blur(4px);
+  padding: 20px 24px;
 }
 
 .guest-greeting {
   font-size: 17px;
   font-weight: bold;
   color: #5a3924;
-  margin: 0 0 6px;
+  margin: 0 0 8px;
 }
 
 .guest-message {
@@ -77,46 +195,114 @@ h3 {
   margin: 0;
 }
 
-/* ── MAP ── */
-.map {
-  width: 100%;
-  height: 260px;
-  border: none;
-  border-radius: 10px;
-  margin-top: 10px;
+/* ═══════════════════════════════════════════
+   COUNTDOWN
+═══════════════════════════════════════════ */
+
+.countdown-section {
+  text-align: center;
+  background: rgba(30, 16, 8, 0.78);
+  border-radius: 16px;
+  padding: 28px 20px;
+  margin: 0 16px;
 }
 
-/* ── CALENDAR ── */
+.countdown-label {
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #c49a6c;
+  margin-bottom: 20px;
+}
+
+.countdown-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 60px;
+  background: rgba(176, 124, 85, 0.2);
+  border: 1px solid #b07c55;
+  border-radius: 10px;
+  padding: 10px 14px;
+  animation: pulse-ring 2.5s ease-out infinite;
+}
+
+.countdown-num {
+  font-size: clamp(28px, 7vw, 48px);
+  font-weight: bold;
+  color: #f5dfc0;
+  line-height: 1;
+  display: inline-block;
+  min-width: 2ch;
+  text-align: center;
+}
+
+.countdown-text {
+  font-size: 11px;
+  color: #c49a6c;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 4px;
+}
+
+.countdown-sep {
+  font-size: 30px;
+  color: #b07c55;
+  font-weight: bold;
+  margin-bottom: 18px;
+  align-self: center;
+}
+
+/* ═══════════════════════════════════════════
+   CALENDAR
+═══════════════════════════════════════════ */
+
 .calendar-section {
   text-align: center;
+}
+
+.calendar-section h3 {
+  font-size: 18px;
+  color: #5a3924;
+  margin-bottom: 16px;
 }
 
 .calendar {
   display: inline-block;
   width: 100%;
   max-width: 340px;
-  background: #fff8f2;
+  background: rgba(255, 248, 242, 0.92);
   border: 1px solid #e8d5c4;
-  border-radius: 12px;
+  border-radius: 14px;
   overflow: hidden;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
   margin: 0 auto 20px;
+  backdrop-filter: blur(4px);
 }
 
 .cal-header {
-  background: #b07c55;
+  background: linear-gradient(135deg, #b07c55, #d4956a);
   color: #fff;
   font-size: 15px;
   font-weight: bold;
-  padding: 11px;
-  letter-spacing: 0.06em;
+  padding: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .cal-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 2px;
-  padding: 8px;
+  padding: 10px 8px;
 }
 
 .cal-label {
@@ -124,7 +310,7 @@ h3 {
   font-weight: bold;
   color: #b07c55;
   text-align: center;
-  padding: 4px 0;
+  padding: 4px 0 6px;
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
@@ -138,56 +324,271 @@ h3 {
   font-size: 12px;
   color: #3a2c23;
   border-radius: 50%;
+  transition: background 0.2s;
 }
 
 .cal-cell.highlight {
-  background: #b07c55;
+  background: linear-gradient(135deg, #b07c55, #d4956a);
   color: #fff;
   font-weight: bold;
-  box-shadow: 0 2px 8px rgba(176, 124, 85, 0.5);
+  box-shadow: 0 2px 10px rgba(176, 124, 85, 0.55);
+  animation: pulse-ring 2s ease-out infinite;
 }
 
 .heart-icon {
   font-size: 8px;
   line-height: 1;
   display: block;
+  animation: heartbeat 1.4s ease-in-out infinite;
 }
 
-/* ── ADD TO CALENDAR BUTTON ── */
 .add-to-calendar-btn {
-  padding: 10px 26px;
-  background: #b07c55;
+  display: block;
+  margin: 0 auto;
+  padding: 11px 30px;
+  background: linear-gradient(135deg, #b07c55, #d4956a);
   color: #fff;
   font-family: 'Georgia', serif;
   font-size: 14px;
   border: none;
   border-radius: 30px;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(176, 124, 85, 0.35);
-  transition: background 0.2s ease, transform 0.15s ease;
+  box-shadow: 0 4px 14px rgba(176, 124, 85, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: floatUp 3s ease-in-out infinite;
 }
 
 .add-to-calendar-btn:hover {
-  background: #9a6743;
-  transform: translateY(-1px);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(176, 124, 85, 0.5);
 }
 
-/* ── RECEPTION ── */
-.reception {
-  background: #fdf6ef;
-  border-radius: 10px;
-  padding: 16px 20px;
+/* ═══════════════════════════════════════════
+   MAP
+═══════════════════════════════════════════ */
+
+h3 {
+  font-size: 18px;
+  color: #5a3924;
+  margin: 0 0 12px;
 }
 
+.church-location p,
 .reception p {
-  margin: 6px 0;
   font-size: 14px;
+  color: #6b4f3a;
+  margin-bottom: 8px;
 }
 
-/* ── FOOTER ── */
+.map {
+  width: 100%;
+  height: 240px;
+  border: none;
+  border-radius: 12px;
+  margin-top: 10px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+}
+
+/* ═══════════════════════════════════════════
+   RECEPTION
+═══════════════════════════════════════════ */
+
+.reception {
+  background: rgba(253, 246, 239, 0.82);
+  border-radius: 14px;
+  backdrop-filter: blur(4px);
+}
+
+.reception-details {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 16px 0 20px;
+}
+
+.reception-detail-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: rgba(255,255,255,0.5);
+  border-radius: 10px;
+  padding: 12px 16px;
+  border: 1px solid #e8d5c4;
+}
+
+.detail-icon {
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.reception-detail-item strong {
+  display: block;
+  font-size: 13px;
+  color: #5a3924;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 2px;
+}
+
+.reception-detail-item p {
+  margin: 0;
+  font-size: 14px;
+  color: #3a2c23;
+}
+
+/* ═══════════════════════════════════════════
+   RSVP
+═══════════════════════════════════════════ */
+
+.rsvp-section {
+  background: rgba(253, 246, 239, 0.85);
+  border-radius: 14px;
+  backdrop-filter: blur(4px);
+}
+
+.rsvp-section h3 {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  color: #5a3924;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #d4b896;
+  border-radius: 8px;
+  font-family: 'Georgia', serif;
+  font-size: 14px;
+  color: #3a2c23;
+  background: rgba(255,255,255,0.7);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-input:focus {
+  border-color: #b07c55;
+  box-shadow: 0 0 0 3px rgba(176, 124, 85, 0.2);
+}
+
+.form-textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #d4b896;
+  border-radius: 8px;
+  font-family: 'Georgia', serif;
+  font-size: 14px;
+  color: #3a2c23;
+  background: rgba(255,255,255,0.7);
+  outline: none;
+  resize: vertical;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-textarea:focus {
+  border-color: #b07c55;
+  box-shadow: 0 0 0 3px rgba(176, 124, 85, 0.2);
+}
+
+.attendance-btns {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.attend-btn {
+  flex: 1;
+  min-width: 130px;
+  padding: 10px 14px;
+  border: 2px solid #d4b896;
+  border-radius: 30px;
+  background: rgba(255,255,255,0.6);
+  font-family: 'Georgia', serif;
+  font-size: 13px;
+  color: #5a3924;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.attend-btn:hover {
+  border-color: #b07c55;
+  background: rgba(176, 124, 85, 0.1);
+}
+
+.attend-btn.selected {
+  border-color: #b07c55;
+  background: linear-gradient(135deg, #b07c55, #d4956a);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(176, 124, 85, 0.4);
+}
+
+.rsvp-submit-btn {
+  width: 100%;
+  padding: 13px;
+  background: linear-gradient(135deg, #b07c55, #d4956a);
+  color: #fff;
+  font-family: 'Georgia', serif;
+  font-size: 15px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(176, 124, 85, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-top: 6px;
+}
+
+.rsvp-submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(176, 124, 85, 0.5);
+}
+
+.rsvp-submit-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.rsvp-thanks {
+  font-size: 16px;
+  color: #5a3924;
+  text-align: center;
+  padding: 20px 0;
+  font-style: italic;
+  animation: fadeUp 0.6s ease both;
+}
+
+/* ═══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+
 .footer {
   text-align: center;
-  margin-top: 40px;
   font-style: italic;
   color: #6b4f3a;
+  padding-bottom: 40px;
+}
+
+.footer-ornament {
+  font-size: 28px;
+  margin-bottom: 12px;
+  display: block;
+  animation: heartbeat 1.8s ease-in-out infinite;
+}
+
+.footer-date {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #b07c55;
+  margin-top: 8px;
 }

@@ -1,53 +1,63 @@
 <div class="invitation">
 
+  <!-- ── BACKGROUND IMAGE (faded) ── -->
+  <div class="bg-image"></div>
+
   <!-- ── COUPLE PHOTO ── -->
-  <div class="our-photo">
-    <img src="media/couple.jpeg" alt="Kyrillos & Selvana" class="couple-photo" />
+  <div class="fade-section our-photo">
+    <img src="assets/couple.jpg" alt="Kyrillos & Selvana" class="couple-photo" />
   </div>
 
   <!-- ── NAMES & DATE ── -->
-  <div class="names-date">
-    <p class="title">We're Getting Married</p>
+  <div class="fade-section names-date">
+    <p class="pre-title">You are cordially invited to the wedding of</p>
+    <p class="title">Kyrillos &amp; Selvana</p>
     <p class="names">Kyrillos Naeem &amp; Selvana Osama</p>
-    <p class="date">Saturday · July 19, 2025</p>
-    <p class="location">St Mark and St Peter Church, Alexandria, Egypt</p>
+    <p class="date">Saturday · July 19, 2026</p>
+    <p class="location">St Mark and St Peter Church · Alexandria, Egypt</p>
+    <div class="divider-ornament">✦ ✦ ✦</div>
   </div>
 
-  <hr />
-
-  <!-- ── CUSTOM GUEST MESSAGE (from invitation-config.json) ── -->
-  <div class="invitation-text" *ngIf="customMessage">
+  <!-- ── CUSTOM GUEST MESSAGE ── -->
+  <div class="fade-section invitation-text" *ngIf="customMessage">
     <p class="guest-greeting">Dear {{ guestName }},</p>
     <p class="guest-message">{{ customMessage }}</p>
   </div>
 
-  <hr />
-
-  <!-- ── CHURCH LOCATION ── -->
-  <div class="church-location">
-    <h3>Ceremony Venue</h3>
-    <p>St Mark and St Peter Church, Alexandria, Egypt</p>
-    <iframe
-      class="map"
-      loading="lazy"
-      allowfullscreen
-      referrerpolicy="no-referrer-when-downgrade"
-      src="https://www.google.com/maps?q=31.263235,29.992054&z=19&output=embed">
-    </iframe>
+  <!-- ── COUNTDOWN ── -->
+  <div class="fade-section countdown-section">
+    <p class="countdown-label">Counting down to the big day</p>
+    <div class="countdown-grid">
+      <div class="countdown-unit">
+        <span class="countdown-num">{{ countdown.days }}</span>
+        <span class="countdown-text">Days</span>
+      </div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-unit">
+        <span class="countdown-num">{{ countdown.hours }}</span>
+        <span class="countdown-text">Hours</span>
+      </div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-unit">
+        <span class="countdown-num">{{ countdown.minutes }}</span>
+        <span class="countdown-text">Mins</span>
+      </div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-unit">
+        <span class="countdown-num">{{ countdown.seconds }}</span>
+        <span class="countdown-text">Secs</span>
+      </div>
+    </div>
   </div>
 
-  <hr />
-
   <!-- ── SAVE THE DATE CALENDAR ── -->
-  <div class="calendar-section">
-    <h3>Save the Date — July 2025</h3>
+  <div class="fade-section calendar-section">
+    <h3>Save the Date — July 2026</h3>
 
     <div class="calendar">
-      <div class="cal-header">July 2025</div>
-
+      <div class="cal-header">July 2026</div>
       <div class="cal-grid">
         <div class="cal-label" *ngFor="let d of dayLabels">{{ d }}</div>
-
         <div
           *ngFor="let day of calendarDays"
           class="cal-cell"
@@ -64,21 +74,116 @@
     </button>
   </div>
 
-  <hr />
+  <!-- ── CHURCH LOCATION ── -->
+  <div class="fade-section church-location">
+    <h3>Ceremony Venue</h3>
+    <p>St Mark and St Peter Church, Alexandria, Egypt</p>
+    <iframe
+      class="map"
+      loading="lazy"
+      allowfullscreen
+      referrerpolicy="no-referrer-when-downgrade"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d426.4669771164746!2d29.951539096219477!3d31.228047805480184!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14f5c4c2965945db%3A0xddf2e629dcfb4d64!2sDeeb%20Mall%2C%20Alexandria!5e0!3m2!1sen!2seg!4v1782565428620!5m2!1sen!2seg" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin">
+    </iframe>
+  </div>
 
-  <!-- ── RECEPTION (shown only if showReception = true in JSON) ── -->
-  <div class="reception" *ngIf="showReception">
+  <!-- ── RECEPTION ── -->
+  <div class="fade-section reception" *ngIf="showReception">
     <h3>Reception</h3>
     <p>Following the ceremony, please join us for an evening of dinner, dancing, and celebration.</p>
-    <p><strong>Venue:</strong> Nile View Ballroom, Cairo</p>
-    <p><strong>Time:</strong> 7:00 PM onwards</p>
-    <p><strong>Dress Code:</strong> Formal / Black Tie</p>
+
+    <div class="reception-details">
+      <div class="reception-detail-item">
+        <span class="detail-icon">📍</span>
+        <div>
+          <strong>Venue</strong>
+          <p>Royal Classic Hall, Deeb Mall 11th Floor</p>
+        </div>
+      </div>
+      <div class="reception-detail-item">
+        <span class="detail-icon">🕖</span>
+        <div>
+          <strong>Time</strong>
+          <p>8:30 PM onwards</p>
+        </div>
+      </div>
+      <div class="reception-detail-item">
+        <span class="detail-icon">👔</span>
+        <div>
+          <strong>Dress Code</strong>
+          <p>Formal</p>
+        </div>
+      </div>
+    </div>
+
+    <iframe
+      class="map"
+      loading="lazy"
+      allowfullscreen
+      referrerpolicy="no-referrer-when-downgrade"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d426.4669771164746!2d29.951539096219477!3d31.228047805480184!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14f5c4c2965945db:0xddf2e629dcfb4d64!2sDeeb%20Mall,%20Alexandria!5e0!3m2!1sen!2seg!4v1782565428620!5m2!1sen!2seg">
+    </iframe>
+  </div>
+
+  
+
+  <!-- ── RSVP ── -->
+  <div class="fade-section rsvp-section">
+    <h3>Leave a Message</h3>
+
+    <div class="rsvp-submitted" *ngIf="rsvpSubmitted">
+      <p class="rsvp-thanks">💌 Thank you, {{ rsvpName }}! Your response has been saved.</p>
+    </div>
+
+    <div class="rsvp-form" *ngIf="!rsvpSubmitted">
+      <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" [(ngModel)]="rsvpName" placeholder="Enter your name" class="form-input" />
+      </div>
+
+      <div class="form-group">
+        <label>Will you be joining us at the reception?</label>
+        <div class="attendance-btns">
+          <button
+            class="attend-btn"
+            [class.selected]="rsvpAttending === 'yes'"
+            (click)="rsvpAttending = 'yes'">
+            🎉 Yes, I'll be there!
+          </button>
+          <button
+            class="attend-btn"
+            [class.selected]="rsvpAttending === 'no'"
+            (click)="rsvpAttending = 'no'">
+            😔 Sorry, I can't make it
+          </button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Leave a message for the couple</label>
+        <textarea
+          [(ngModel)]="rsvpMessage"
+          placeholder="Write your wishes here..."
+          class="form-textarea"
+          rows="4">
+        </textarea>
+      </div>
+
+      <button
+        class="rsvp-submit-btn"
+        (click)="submitRsvp()"
+        [disabled]="!rsvpName.trim() || !rsvpAttending">
+        Send ✉️
+      </button>
+    </div>
   </div>
 
   <!-- ── FOOTER ── -->
-  <div class="footer">
-    <p>With love,</p>
-    <p><strong>Abanoub &amp; Nour</strong></p>
+  <div class="fade-section footer">
+    <div class="footer-ornament">💍</div>
+    <p>With all our love,</p>
+    <p><strong>Kyrillos &amp; Selvana</strong></p>
+    <p class="footer-date">July 19, 2026</p>
   </div>
 
 </div>
