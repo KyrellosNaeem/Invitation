@@ -13,8 +13,9 @@ import { InvitationBodyComponent } from '../invitation-body/invitation-body.comp
 export class EnvelopeComponent implements OnInit {
   isOpen = false;
   scrollOffset = 0;
-  guestName = 'Dear Friend';
+  guestName = 'Friend';
   showInvitation = false;
+  dear = 'dear';
 
   // URL params passed to invitation body
   guestCode  = '';   // ?code=K001
@@ -30,7 +31,7 @@ export class EnvelopeComponent implements OnInit {
       // guestName on flap: will be resolved properly inside invitation-body
       // but we set a placeholder here; invitation-body will emit the real name
       if (!this.guestCode && !this.receptionParam) {
-        this.guestName = 'Dear Friend';
+        this.guestName = 'Friend';
       }
     });
 
@@ -58,5 +59,8 @@ export class EnvelopeComponent implements OnInit {
   // Called by invitation-body once it resolves the guest name from the code
   onGuestNameResolved(name: string): void {
     this.guestName = name;
+    if (name.toLowerCase().includes('&')) {
+      this.dear = 'dears';
+    }
   }
 }

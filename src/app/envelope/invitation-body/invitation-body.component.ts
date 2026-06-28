@@ -38,7 +38,7 @@ export class InvitationBodyComponent implements OnInit, AfterViewInit, OnDestroy
   @Output() guestNameResolved = new EventEmitter<string>();
 
   // Resolved values
-  guestName      = 'Dear Friend';
+  guestName      = 'Friend';
   customMessage  = '';
   showReception  = false;
   hasCode        = false;  // true when a valid ?code= was provided → hides signature field
@@ -91,7 +91,7 @@ export class InvitationBodyComponent implements OnInit, AfterViewInit, OnDestroy
       },
       error: () => {
         // Fallback if JSON fails
-        this.guestName     = 'Dear Friend';
+        this.guestName     = 'Friend';
         this.customMessage = 'We joyfully invite you to share in the celebration of our wedding day.';
         this.showReception = this.receptionParam === 'ksar';
         this.hasCode       = false;
@@ -128,6 +128,10 @@ export class InvitationBodyComponent implements OnInit, AfterViewInit, OnDestroy
       this.customMessage = entry.message;
       this.showReception = entry.showReception;
       this.hasCode       = false;
+    }
+
+    if(this.customMessage.trim() === '') {
+      this.customMessage = config.default.message;
     }
 
     this.guestNameResolved.emit(this.guestName);

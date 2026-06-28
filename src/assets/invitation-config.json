@@ -14,15 +14,175 @@
       "name": "Samuel & Madonna",
       "message": "اخويا حبيبي ضهري و سندي في العيله  .. شكرا على وقفتك جنبنا في جوازنا منغيرك مش عارفة كنا هنعمل ايه بجد .. ربنا يخليك ليا و متحرمش منك ابدا❤️",
       "showReception": true
+    },
+    "M109W": {
+      "name": "Maged & Haidy",
+      "message": "",
+      "showReception": true
+    },
+    "SO": {
+      "name": "Samwel & Nancy",
+      "message": "",
+      "showReception": true
+    },
+    "D699Z": {
+      "name": "Dr Mina & Mariam",
+      "message": "",
+      "showReception": true
+    },
+    "U330Y": {
+      "name": "Uncle Safa & Aunty Faten",
+      "message": "",
+      "showReception": true
+    },
+    "M562O": {
+      "name": "Moheb & Maha",
+      "message": "",
+      "showReception": true
+    },
+    "Y404R": {
+      "name": "Youssef & Ann",
+      "message": "",
+      "showReception": true
+    },
+    "UY": {
+      "name": "Uncle Essam & his family",
+      "message": "",
+      "showReception": true
+    },
+    "H804O": {
+      "name": "Hany Nazih",
+      "message": "",
+      "showReception": true
+    },
+    "M566W": {
+      "name": "Micheal & Marlin",
+      "message": "",
+      "showReception": true
+    },
+    "U288G": {
+      "name": "Uncle Nazih & Aunty Mona",
+      "message": "",
+      "showReception": true
+    },
+    "K954Q": {
+      "name": "Kyle & Sarah",
+      "message": "",
+      "showReception": true
+    },
+    "A706V": {
+      "name": "Abanoub & Rania",
+      "message": "",
+      "showReception": true
+    },
+    "BM": {
+      "name": "Bola & Donna",
+      "message": "",
+      "showReception": true
+    },
+    "L668M": {
+      "name": "Lara",
+      "message": "",
+      "showReception": true
+    },
+    "M973S": {
+      "name": "Micheal & Shiry",
+      "message": "",
+      "showReception": true
+    },
+    "R516R": {
+      "name": "Ramy & Rana",
+      "message": "",
+      "showReception": true
+    },
+    "Y197V": {
+      "name": "Youssef & Maro",
+      "message": "",
+      "showReception": true
+    },
+    "Y810R": {
+      "name": "Youssef & Martina",
+      "message": "",
+      "showReception": true
+    },
+    "M098O": {
+      "name": "Mariam",
+      "message": "thank you our third wheel❤️",
+      "showReception": true
+    },
+    "E159Q": {
+      "name": "Evronia",
+      "message": "",
+      "showReception": true
+    },
+    "M494K": {
+      "name": "Marina",
+      "message": "",
+      "showReception": true
+    },
+    "V826M": {
+      "name": "Verina",
+      "message": "",
+      "showReception": true
+    },
+    "M827Y": {
+      "name": "Micheal & Veronia",
+      "message": "",
+      "showReception": true
+    },
+    "R474L": {
+      "name": "Remonda",
+      "message": "",
+      "showReception": true
+    },
+    "M561Q": {
+      "name": "Mina & Youstina",
+      "message": "",
+      "showReception": true
+    },
+    "A575T": {
+      "name": "Abanob & Mirna",
+      "message": "",
+      "showReception": true
+    },
+    "J851Q": {
+      "name": "John & Veronica",
+      "message": "",
+      "showReception": true
+    },
+    "M014S": {
+      "name": "Mark & Merihan",
+      "message": "",
+      "showReception": true
+    },
+    "J936V": {
+      "name": "Jozeph & Marina",
+      "message": "",
+      "showReception": true
+    },
+    "M387N": {
+      "name": "Madlen",
+      "message": "",
+      "showReception": true
+    },
+    "M606L": {
+      "name": "Mario",
+      "message": "",
+      "showReception": true
+    },
+    "M719W": {
+      "name": "Maged & Karin",
+      "message": "",
+      "showReception": true
     }
   },
   "default": {
-    "name": "Dear Friend",
+    "name": "Friend",
     "message": "We joyfully invite you to share in the celebration of our wedding day. Your presence is our greatest gift.",
     "showReception": false
   },
   "receptionDefault": {
-    "name": "Dear Friend",
+    "name": "Friend",
     "message": "We joyfully invite you to share in the celebration of our wedding day. Your presence is our greatest gift.",
     "showReception": true
   }
