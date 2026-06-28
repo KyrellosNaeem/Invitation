@@ -129,18 +129,12 @@
 
   <!-- ── RSVP ── -->
   <div class="fade-section rsvp-section">
-    <h3>Leave a Message</h3>
 
     <div class="rsvp-submitted" *ngIf="rsvpSubmitted">
       <p class="rsvp-thanks">💌 Thank you, {{ rsvpName }}! Your response has been saved.</p>
     </div>
 
     <div class="rsvp-form" *ngIf="!rsvpSubmitted">
-      <div class="form-group">
-        <label>Your Name</label>
-        <input type="text" [(ngModel)]="rsvpName" placeholder="Enter your name" class="form-input" />
-      </div>
-
       <div class="form-group">
         <label>Will you be joining us at the reception?</label>
         <div class="attendance-btns">
@@ -169,6 +163,11 @@
         </textarea>
       </div>
 
+      <div class="form-group">
+        <label>Your Signature</label>
+        <input type="text" [(ngModel)]="rsvpName" placeholder="Enter your name" class="form-input" />
+      </div>
+
       <button
         class="rsvp-submit-btn"
         (click)="submitRsvp()"
@@ -184,6 +183,10 @@
     <p>With all our love,</p>
     <p><strong>Kyrillos &amp; Selvana</strong></p>
     <p class="footer-date">July 19, 2026</p>
+  </div>
+  <!-- ── COUPLE PHOTO ── -->
+  <div class="fade-section our-photo-end">
+    <img src="assets/couple2.jpg" alt="Kyrillos & Selvana" class="couple-photo-end" />
   </div>
 
 </div>

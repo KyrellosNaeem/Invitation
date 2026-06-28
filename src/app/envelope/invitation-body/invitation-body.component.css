@@ -48,7 +48,6 @@
 
 .invitation {
   position: relative;
-  padding: 0 0 60px;
   font-family: 'Georgia', serif;
   color: #3a2c23;
   line-height: 1.7;
@@ -114,7 +113,25 @@
   border-radius: 0 0 16px 16px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
   mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
-  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%);
+}
+
+.our-photo-end {
+  text-align: center;
+  padding-bottom: 0;
+  padding-inline: 0 !important;
+  top: -184px;
+  position: relative;
+  margin-bottom: -184px;
+}
+
+.couple-photo-end{
+  width: 100%;
+  object-fit: cover;
+  border-radius: 16px 16px 0 0;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  mask-image: linear-gradient(to top, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+  -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
 }
 
 /* ═══════════════════════════════════════════
