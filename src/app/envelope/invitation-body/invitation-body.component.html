@@ -12,7 +12,8 @@
   <div class="fade-section names-date">
     <p class="pre-title">You are cordially invited to the wedding of</p>
     <p class="title">Kyrillos &amp; Selvana</p>
-    <p class="names">Kyrillos Naeem &amp; Selvana Osama</p>
+    <p class="names">إِذًا لَيْسَا بَعْدُ اثْنَيْنِ بَلْ جَسَدًا وَاحِدًا. فَالَّذِي جَمَعَهُ اللهُ لاَ يُفَرِّقْهُ إِنْسَانٌ.</p>
+    <p class="names"> (مت ١٩: ٦)</p>
     <p class="date">Saturday · July 19, 2026</p>
     <p class="location">St Mark and St Peter Church · Alexandria, Egypt</p>
     <div class="divider-ornament">✦ ✦ ✦</div>
@@ -96,7 +97,7 @@
       <div class="reception-detail-item">
         <span class="detail-icon">📍</span>
         <div>
-          <strong>Venue</strong>
+          <strong>Reception</strong>
           <p>Royal Classic Hall, Deeb Mall 11th Floor</p>
         </div>
       </div>
@@ -108,10 +109,10 @@
         </div>
       </div>
       <div class="reception-detail-item">
-        <span class="detail-icon">👔</span>
+        <span class="detail-icon">👶🧒</span>
         <div>
-          <strong>Dress Code</strong>
-          <p>Formal</p>
+          <strong>A Kind Note</strong>
+          <p>May your little ones sleep well at home, so you can enjoy your night with us 🌙</p>
         </div>
       </div>
     </div>
@@ -135,8 +136,8 @@
     </div>
 
     <div class="rsvp-form" *ngIf="!rsvpSubmitted">
-      <div class="form-group">
-        <label>Will you be joining us at the reception?</label>
+      <div class="form-group" *ngIf="showReception">
+        <label >Will you be joining us at the reception?</label>
         <div class="attendance-btns">
           <button
             class="attend-btn"

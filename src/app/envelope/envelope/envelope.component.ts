@@ -24,7 +24,7 @@ export class EnvelopeComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-      this.guestCode       = params['code'] ?? '';
+      this.guestCode       = params['c'] ?? '';
       this.receptionParam  = params['r']    ?? '';
 
       // guestName on flap: will be resolved properly inside invitation-body

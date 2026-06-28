@@ -163,8 +163,13 @@
 }
 
 .names {
-  font-size: clamp(14px, 2.8vw, 20px);
-  color: #b07c55;
+  font-size: clamp(25px, 2.8vw, 20px);
+  background: linear-gradient(120deg, #8b5e3c, #d4956a, #8b5e3c);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
   margin: 6px 0;
   letter-spacing: 0.05em;
 }
@@ -414,6 +419,7 @@ h3 {
   background: rgba(253, 246, 239, 0.82);
   border-radius: 14px;
   backdrop-filter: blur(4px);
+  margin-bottom: 15px;
 }
 
 .reception-details {

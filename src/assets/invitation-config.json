@@ -1,18 +1,18 @@
 {
   "guests": {
-    "k001": {
-      "name": "Kyrillos",
-      "message": "We are overjoyed to have you celebrate this special day with us. Your presence means the world to us!",
+    "M274I": {
+      "name": "Mama",
+      "message": "شكرا يا ماما على كل حاجة و كل تعبك معايا و تحملك عشاني طول سنين حياتي و شكرا عشان بتحاولي تعملي كل حاجة عشان اعمل كل الي نفسي فيه في جهازي و فرحي ، شكرا من هنا و لأخر يوم في عمري ❤️",
       "showReception": true
     },
-    "s002": {
-      "name": "Selvana",
-      "message": "Your warmth and love have always been a blessing. We can't wait to share this joyful moment with you.",
+    "P717V": {
+      "name": "Peter & Sandra",
+      "message": "حبايبي شكرا لاني سحلتكوا معايا كتير في كل الترتيبات و الحجوزات و لسه السحله مخلصتش .. ربنا يخليكوا ليا ❤️",
       "showReception": true
     },
-    "f003": {
-      "name": "Peter",
-      "message": "It means so much to have you with us on this special day!",
+    "S424U": {
+      "name": "Samuel & Madonna",
+      "message": "اخويا حبيبي ضهري و سندي في العيله  .. شكرا على وقفتك جنبنا في جوازنا منغيرك مش عارفة كنا هنعمل ايه بجد .. ربنا يخليك ليا و متحرمش منك ابدا❤️",
       "showReception": false
     }
   },
