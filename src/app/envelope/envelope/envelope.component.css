@@ -168,3 +168,15 @@
   height: 100%;
   scroll-behavior: smooth;
 }
+
+
+@media (min-width: 768px) {
+  :host {
+    padding-inline: 30%;
+  }
+
+  .envelope {
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  }
+}
