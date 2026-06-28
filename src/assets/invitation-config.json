@@ -1,17 +1,29 @@
 {
-  "showReception": true,
   "guests": {
-    "kyrillos": {
+    "k001": {
+      "name": "Kyrillos",
       "message": "We are overjoyed to have you celebrate this special day with us. Your presence means the world to us!",
       "showReception": true
     },
-    "selvana": {
+    "s002": {
+      "name": "Selvana",
       "message": "Your warmth and love have always been a blessing. We can't wait to share this joyful moment with you.",
       "showReception": true
     },
-    "default": {
-      "message": "We joyfully invite you to share in the celebration of our wedding day. Your presence is our greatest gift.",
-      "showReception": true
+    "f003": {
+      "name": "Peter",
+      "message": "It means so much to have you with us on this special day!",
+      "showReception": false
     }
+  },
+  "default": {
+    "name": "Dear Friend",
+    "message": "We joyfully invite you to share in the celebration of our wedding day. Your presence is our greatest gift.",
+    "showReception": false
+  },
+  "receptionDefault": {
+    "name": "Dear Friend",
+    "message": "We joyfully invite you to share in the celebration of our wedding day. Your presence is our greatest gift.",
+    "showReception": true
   }
 }

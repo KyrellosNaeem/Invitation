@@ -21,7 +21,11 @@
 
   <!-- Scrollable invitation content -->
   <div class="invitation-wrapper" *ngIf="showInvitation" (click)="$event.stopPropagation()" (scroll)="onScroll($event)">
-    <app-invitation-body [guestName]="guestName"></app-invitation-body>
+    <app-invitation-body
+      [guestCode]="guestCode"
+      [receptionParam]="receptionParam"
+      (guestNameResolved)="onGuestNameResolved($event)">
+    </app-invitation-body>
   </div>
 
 </div>

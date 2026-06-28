@@ -1,15 +1,18 @@
-import { Component, Input, OnInit, OnDestroy, AfterViewInit, ElementRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, OnDestroy, AfterViewInit, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
 interface GuestEntry {
+  name: string;
   message: string;
+  showReception: boolean;
 }
 
 interface InvitationConfig {
-  showReception: boolean;
-  guests: { [key: string]: GuestEntry };
+  guests: { [code: string]: GuestEntry };
+  default: GuestEntry;
+  receptionDefault: GuestEntry;
 }
 
 interface CountdownTime {
@@ -27,10 +30,18 @@ interface CountdownTime {
   styleUrl: './invitation-body.component.css'
 })
 export class InvitationBodyComponent implements OnInit, AfterViewInit, OnDestroy {
-  @Input() guestName: string = 'Dear Friend';
+  // URL params from envelope
+  @Input() guestCode      = '';   // ?code=K001
+  @Input() receptionParam = '';   // ?r=ksar  → forces showReception=true with default message
 
-  customMessage = '';
-  showReception = false;
+  // Emits resolved guest name back to envelope (for flap display)
+  @Output() guestNameResolved = new EventEmitter<string>();
+
+  // Resolved values
+  guestName      = 'Dear Friend';
+  customMessage  = '';
+  showReception  = false;
+  hasCode        = false;  // true when a valid ?code= was provided → hides signature field
 
   // ── CALENDAR ──
   readonly weddingDay   = 19;
@@ -44,11 +55,12 @@ export class InvitationBodyComponent implements OnInit, AfterViewInit, OnDestroy
   private countdownInterval: any;
 
   // ── RSVP ──
-  rsvpName        = '';
-  rsvpMessage     = '';
+  rsvpName       = '';
+  rsvpMessage    = '';
   rsvpAttending: 'yes' | 'no' | null = null;
-  rsvpSubmitted   = false;
-  rsvpError       = false;
+  rsvpSubmitted  = false;
+  rsvpSubmitting = false;
+  rsvpError      = false;
 
   // ── INTERSECTION OBSERVER ──
   private observer!: IntersectionObserver;
@@ -74,19 +86,51 @@ export class InvitationBodyComponent implements OnInit, AfterViewInit, OnDestroy
   private loadConfig(): void {
     this.http.get<InvitationConfig>('assets/invitation-config.json').subscribe({
       next: (config) => {
-        this.showReception = config.showReception;
-        const key   = this.guestName.toLowerCase().trim();
-        const entry = config.guests[key] ?? config.guests['default'];
-        this.customMessage = entry?.message ?? '';
-        // Re-observe after *ngIf sections are rendered in the DOM
+        this.resolveGuest(config);
         setTimeout(() => this.setupFadeIn(), 50);
       },
       error: () => {
+        // Fallback if JSON fails
+        this.guestName     = 'Dear Friend';
         this.customMessage = 'We joyfully invite you to share in the celebration of our wedding day.';
-        this.showReception = true;
+        this.showReception = this.receptionParam === 'ksar';
+        this.hasCode       = false;
+        this.rsvpName      = this.guestName;
+        this.guestNameResolved.emit(this.guestName);
         setTimeout(() => this.setupFadeIn(), 50);
       }
     });
+  }
+
+  private resolveGuest(config: InvitationConfig): void {
+    const code = this.guestCode.trim();
+    const r    = this.receptionParam.trim().toLowerCase();
+
+    if (code && config.guests[code]) {
+      // ── Valid code: use that guest's entry ──
+      const entry        = config.guests[code];
+      this.guestName     = entry.name;
+      this.customMessage = entry.message;
+      this.showReception = entry.showReception;
+      this.hasCode       = true;
+      this.rsvpName      = entry.name; // pre-fill & hide signature field
+    } else if (r === 'ksar') {
+      // ── ?r=ksar: default message but reception forced ON ──
+      const entry        = config.receptionDefault;
+      this.guestName     = entry.name;
+      this.customMessage = entry.message;
+      this.showReception = true;
+      this.hasCode       = false;
+    } else {
+      // ── No params: plain default, no reception ──
+      const entry        = config.default;
+      this.guestName     = entry.name;
+      this.customMessage = entry.message;
+      this.showReception = entry.showReception;
+      this.hasCode       = false;
+    }
+
+    this.guestNameResolved.emit(this.guestName);
   }
 
   // ── CALENDAR ──
@@ -143,8 +187,6 @@ export class InvitationBodyComponent implements OnInit, AfterViewInit, OnDestroy
   // ── FADE-IN ON SCROLL ──
   private setupFadeIn(): void {
     const sections = this.el.nativeElement.querySelectorAll('.fade-section');
-
-    // Disconnect previous observer before creating a new one
     if (this.observer) this.observer.disconnect();
 
     this.observer = new IntersectionObserver((entries) => {
@@ -160,25 +202,28 @@ export class InvitationBodyComponent implements OnInit, AfterViewInit, OnDestroy
   }
 
   // ── RSVP ──
-  submitRsvp(): void {return;
+  submitRsvp(): void {
     if (!this.rsvpName.trim() || !this.rsvpAttending) return;
 
-    const line = [
-      `Guest: ${this.rsvpName.trim()}`,
-      `Attending Reception: ${this.rsvpAttending === 'yes' ? 'Yes' : 'No'}`,
-      `Message: ${this.rsvpMessage.trim() || '—'}`,
-      `Submitted: ${new Date().toLocaleString()}`,
-      '---'
-    ].join('\n');
+    this.rsvpSubmitting = true;
+    this.rsvpError      = false;
 
-    const blob = new Blob([line + '\n'], { type: 'text/plain' });
-    const url  = URL.createObjectURL(blob);
-    const a    = document.createElement('a');
-    a.href     = url;
-    a.download = `rsvp_${this.rsvpName.trim().replace(/\s+/g, '_')}.txt`;
-    a.click();
-    URL.revokeObjectURL(url);
+    const payload = {
+      name:      this.rsvpName.trim(),
+      attending: this.rsvpAttending,
+      message:   this.rsvpMessage.trim(),
+      code:      this.guestCode || null
+    };
 
-    this.rsvpSubmitted = true;
+    this.http.post('https://wedding-rsvp-six-inky.vercel.app/api/rsvp', payload).subscribe({
+      next: () => {
+        this.rsvpSubmitted  = true;
+        this.rsvpSubmitting = false;
+      },
+      error: () => {
+        this.rsvpError      = true;
+        this.rsvpSubmitting = false;
+      }
+    });
   }
 }

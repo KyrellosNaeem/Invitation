@@ -1,8 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, NgZone, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { InvitationBodyComponent } from '../invitation-body/invitation-body.component';
-import { first } from 'rxjs/internal/operators/first';
 
 @Component({
   selector: 'app-envelope',
@@ -17,24 +16,33 @@ export class EnvelopeComponent implements OnInit {
   guestName = 'Dear Friend';
   showInvitation = false;
 
+  // URL params passed to invitation body
+  guestCode  = '';   // ?code=K001
+  receptionParam = ''; // ?r=ksar
+
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-      if (params['guest']) {
-        this.guestName = decodeURIComponent(params['guest']);
+      this.guestCode       = params['code'] ?? '';
+      this.receptionParam  = params['r']    ?? '';
+
+      // guestName on flap: will be resolved properly inside invitation-body
+      // but we set a placeholder here; invitation-body will emit the real name
+      if (!this.guestCode && !this.receptionParam) {
+        this.guestName = 'Dear Friend';
       }
     });
 
-     setTimeout(() => {
+    setTimeout(() => {
       this.showInvitation = true;
-              }, 3000);
+    }, 3000);
   }
-  
+
   toggleEnvelope(): void {
     if (this.scrollOffset < 1) {
       if (!this.isOpen) {
-        this.scrollOffset = 150; // Reset scroll offset when opening the envelope
+        this.scrollOffset = 150;
       }
       this.isOpen = !this.isOpen;
     }
@@ -45,5 +53,10 @@ export class EnvelopeComponent implements OnInit {
     if (this.isOpen) {
       this.scrollOffset = target.scrollTop;
     }
+  }
+
+  // Called by invitation-body once it resolves the guest name from the code
+  onGuestNameResolved(name: string): void {
+    this.guestName = name;
   }
 }

@@ -163,7 +163,7 @@
         </textarea>
       </div>
 
-      <div class="form-group">
+      <div class="form-group" *ngIf="!hasCode">
         <label>Your Signature</label>
         <input type="text" [(ngModel)]="rsvpName" placeholder="Enter your name" class="form-input" />
       </div>
@@ -171,9 +171,11 @@
       <button
         class="rsvp-submit-btn"
         (click)="submitRsvp()"
-        [disabled]="!rsvpName.trim() || !rsvpAttending">
-        Send ✉️
+        [disabled]="(!rsvpName.trim() && !hasCode) || !rsvpAttending || rsvpSubmitting">
+        {{ rsvpSubmitting ? "Sending..." : "Send ✉️" }}
       </button>
+
+      <p class="rsvp-error" *ngIf="rsvpError">❌ Could not save response. Make sure the server is running.</p>
     </div>
   </div>
 
