@@ -101,7 +101,7 @@
   padding: 10px 10px;
   background-image:
     linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)),
-    url("../../../assets/bg.png");
+    url("../../../assets/bg.jpeg");
   border-radius: 18px;
   backdrop-filter: blur(2px);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);

@@ -58,7 +58,7 @@
 .bg-image {
   position: fixed;
   inset: 0;
-  background-image: url('../../../assets/bg.png');
+  background-image: url('../../../assets/bg.jpeg');
   background-size: cover;
   background-position: center;
   background-attachment: local;
