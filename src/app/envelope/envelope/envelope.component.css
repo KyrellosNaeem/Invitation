@@ -164,9 +164,17 @@
   position: absolute;
   inset: 0;
   z-index: 2;
-  overflow-y: scroll;
+  overflow-y: auto;
   height: 100%;
   scroll-behavior: smooth;
+}
+
+.envelope.scrolled .flap,
+.envelope.scrolled .left-side,
+.envelope.scrolled .right-side,
+.envelope.scrolled .flap-text-wrapper,
+.envelope.scrolled .stamp {
+  pointer-events: none;
 }
 
 

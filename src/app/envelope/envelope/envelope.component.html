@@ -1,4 +1,8 @@
-<div class="envelope" [class.open]="isOpen" (click)="toggleEnvelope()">
+<div
+  class="envelope"
+  [class.open]="isOpen"
+  [class.scrolled]="scrollOffset > 0"
+  (click)="toggleEnvelope()">
 
   <!-- Top flap -->
   <div class="flap">

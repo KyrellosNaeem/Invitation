@@ -41,13 +41,18 @@ export class EnvelopeComponent implements OnInit {
   }
 
   toggleEnvelope(): void {
-    if (this.scrollOffset < 1) {
-      if (!this.isOpen) {
-        this.scrollOffset = 150;
-      }
-      this.isOpen = !this.isOpen;
-    }
+
+  // Allow closing/opening only at the top
+  if (this.scrollOffset > 0) {
+    return;
   }
+
+  if (!this.isOpen) {
+    this.scrollOffset = 150;
+  }
+
+  this.isOpen = !this.isOpen;
+}
 
   onScroll(event: Event): void {
     const target = event.target as HTMLElement;
